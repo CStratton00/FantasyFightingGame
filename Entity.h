@@ -1,6 +1,6 @@
-
 //
 // Created by Collin Stratton on 4/7/20.
+// File contains Entity, Player, Monster, and Boss Classes
 //
 
 #ifndef FANTASYFIGHTINGGAME_ENTITY_H
@@ -8,17 +8,18 @@
 
 #include "ShopItems.h"
 
-class Entity {
+class Entity { // Parent class for all the entities in the game
 private:
     string name;
     double health;
-    Weapon* weapon{};
+    Weapon* weapon{}; // uses weapon class to assign damage and initiative to entities
     int position;
     bool alive;
 
 public:
-    explicit Entity(string name = "", double h = 10.00, int p = 1, string n = "Sword", double d = 10.00, double ed = 0.00, int i = 1, bool l = true) {
-        name = name;
+    explicit Entity(string Name = "", double h = 10.00, int p = 1, string n = "Sword", double d = 10.00, double ed = 0.00, int i = 1, bool l = true) {
+        weapon = new Weapon("", 1, false, 0, 0, 0);
+        name = Name;
         health = h;
         position = p;
         weapon->SetName(n);
@@ -34,10 +35,8 @@ public:
     double GetExtraDamage() {return weapon->GetExtraDamage();}
     int GetInit() {return weapon->GetInit();}
     int GetPosition() {return position;}
-    bool isAlive() {return alive;}
     virtual int GetDefense() = 0;
     virtual int GetGold() = 0;
-    virtual bool isFighting() = 0;
 
     void SetName(string n) {name = n;}
     void SetHealth(double h) {health = h;}
@@ -45,20 +44,21 @@ public:
     void SetExtraDamage(double ed) {weapon->SetExtraDamage(ed);}
     void SetInit(int i) {weapon->SetInit(i);}
     void SetPosition(int p) {position = p;}
-    void SetLivingStatus(bool l) {alive = l;}
     virtual void SetDefense(int d) = 0;
     virtual void SetGold(int g) = 0;
-    virtual void SetFighting(bool f) = 0;
+
+    virtual void DisplayStats() = 0;
 };
 
-class Player : public Entity {
+class Player : public Entity { // daughter class of entity that is used by the user to play the game
 private:
-    Armor* armor;
+    Armor* armor; // uses armor class to assign defense value
     int gold;
     bool fighting;
 
 public:
-    explicit Player(string name = "Player", double h = 100.00, int p = 0, string n = "Sword", double d = 5.00, double ed = 0.00, int i = 1, bool l = true, int de = 0, int g = 0, bool f = false) : Entity(n, h, p, n, d, ed, i, l) {
+    explicit Player(string Name = "Player", double h = 250.00, int p = 0, string n = "Sword", double d = 5.00, double ed = 0.00, int i = 1, bool l = true, int de = 0, int g = 0, bool f = false) : Entity(Name, h, p, n, d, ed, i, l) {
+        armor = new Armor("", 0, false, 0);
         gold = g;
         fighting = f;
         armor->SetDefense(de);
@@ -66,40 +66,49 @@ public:
 
     int GetDefense() {return armor->GetDefense();}
     int GetGold() {return gold;}
-    bool isFighting() {return fighting;}
 
     void SetDefense(int d) {armor->SetDefense(d);}
     void SetGold(int g) {gold = g;}
-    void SetFighting(bool f) {fighting = f;}
+
+    void DisplayStats() {
+        cout << endl << "<\tPlayer Stats\t>" << endl;
+        cout << "Name: " << GetName() << endl;
+        cout << "Health: " << GetHealth() << endl;
+        cout << "Position: " << GetPosition() << endl;
+        cout << "Weapon Damage Total: " << GetDamage() + GetExtraDamage() << endl;
+        cout << "Weapon Initiative: " << GetInit() << endl;
+        cout << "Defense Value: " << GetDefense() << endl;
+        cout << "Gold: " << GetGold() << endl << endl;
+    }
 };
 
-class Monster : public Entity {
+class Monster : public Entity { // daughter class of entity used to fight against the player
 private:
     int gold;
 
 public:
-    explicit Monster(string name = "Bandit", double h = 10.00, int p = 1, string n = "Sword", double d = 10.00, double ed = 0.00, int i = 1, bool l = true, int g = 10) : Entity(n, h, p, n, d, ed, i, l) {gold = g;}
+    explicit Monster(string name = "Bandit", double h = 10.00, int p = 1, string n = "Sword", double d = 10.00, double ed = 0.00, int i = 1, bool l = true, int g = 10) : Entity(name, h, p, n, d, ed, i, l) {gold = g;}
 
-    int GetDefense() {}
-    int GetGold() {}
-    bool isFighting() {}
+    int GetDefense() {return 0;}
+    int GetGold() {return gold;}
 
     void SetDefense(int d) {}
     void SetGold(int g) {}
-    void SetFighting(bool f) {}
+
+    void DisplayStats() {}
 };
 
-class Boss : public Entity {
+class Boss : public Entity { // daughter class of entity used as the final fight of the game
 public:
-    explicit Boss(string name = "Spirit Beast", double h = 100.00, int p = 21, string n = "Claws", double d = (rand() % 10 + 11), double ed = (rand() % 5 + 1), int i = 5, bool l = true) : Entity(n, h, p, n, d, ed, i, l) {}
+    explicit Boss(string name = "Spirit Beast", double h = 150.00, int p = 21, string n = "Claws", double d = (rand() % 10 + 16), double ed = (rand() % 5 + 10), int i = 5, bool l = true) : Entity(name, h, p, n, d, ed, i, l) {}
 
-    int GetDefense() {}
-    int GetGold() {}
-    bool isFighting() {}
+    int GetDefense() {return 0;}
+    int GetGold() {return 0;}
 
     void SetDefense(int d) {}
     void SetGold(int g) {}
-    void SetFighting(bool f) {}
+
+    void DisplayStats() {}
 };
 
 #endif //FANTASYFIGHTINGGAME_ENTITY_H

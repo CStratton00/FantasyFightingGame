@@ -1,5 +1,6 @@
 //
 // Created by Collin Stratton on 4/7/20.
+// File contains ShopItems, Weapons, Health, and Armor Classes
 //
 
 #ifndef FANTASYFIGHTINGGAME_SHOPITEMS_H
@@ -10,7 +11,7 @@
 
 using namespace std;
 
-class ShopItems {
+class ShopItems { // parent class for all the items to purchase in the shop
 private:
     string name;
     int cost;
@@ -21,11 +22,8 @@ public:
 
     string GetName() {return name;}
     int GetCost() {return cost;}
-    bool isPurchased() {return purchased;}
 
     void SetName(string n) {name = n;}
-    void SetCost(int c) {cost = c;}
-    void SetPurchased(int p) {purchased = p;}
 
     virtual double GetDamage() = 0;
     virtual double GetExtraDamage() = 0;
@@ -36,7 +34,6 @@ public:
     virtual void SetInit(int i) = 0;
 
     virtual int GetLife() = 0;
-    virtual void SetLife(double l) = 0;
 
     virtual int GetDefense() = 0;
     virtual void SetDefense(int d) = 0;
@@ -44,7 +41,7 @@ public:
     virtual void DisplayStats() = 0;
 };
 
-class Weapon : public ShopItems {
+class Weapon : public ShopItems { // daughter class that sets specific values for a weapon
 private:
     double damage, extraDamage;
     int init;
@@ -64,10 +61,9 @@ public:
     void SetExtraDamage(double ed) {extraDamage = ed;}
     void SetInit(int i) {init = i;}
 
-    int GetLife() {};
-    void SetLife(double l) {};
+    int GetLife() {return 0;};
 
-    int GetDefense() {};
+    int GetDefense() {return 0;};
     void SetDefense(int d) {};
 
     void DisplayStats() {
@@ -76,10 +72,11 @@ public:
         cout << "Damage: " << GetDamage() << endl;
         cout << "Extra Damage: " << GetExtraDamage() << endl;
         cout << "Init: " << GetInit() << endl;
+        cout << "Cost: " << GetCost() << endl << endl;
     }
 };
 
-class Health : public ShopItems {
+class Health : public ShopItems { // daughter class that sets specific values for a health to be added to the player
 private:
     int life;
 
@@ -89,27 +86,27 @@ public:
     }
 
     int GetLife() {return life;}
-    void SetLife(double l) {life = l;}
 
-    double GetDamage() {}
-    double GetExtraDamage() {}
-    int GetInit() {}
+    double GetDamage() {return 0;}
+    double GetExtraDamage() {return 0;}
+    int GetInit() {return 0;}
 
     void SetDamage(double d) {}
     void SetExtraDamage(double ed) {}
     void SetInit(int i) {}
 
-    int GetDefense() {};
+    int GetDefense() {return 0;};
     void SetDefense(int d) {};
 
     void DisplayStats() {
-        cout << "\tHealth Potion Stats\t" << endl;
+        cout << "<\tHealth Potion Stats\t>" << endl;
         cout << "Potion Name: " << GetName() << endl;
         cout << "Health Increase: " << GetLife() << endl;
+        cout << "Cost: " << GetCost() << endl << endl;
     }
 };
 
-class Armor : public ShopItems {
+class Armor : public ShopItems { // daughter class that sets specific values for a armor to be added to the player
 private:
     int defense;
 
@@ -121,21 +118,21 @@ public:
     int GetDefense() {return defense;}
     void SetDefense(int d) {defense = d;}
 
-    double GetDamage() {}
-    double GetExtraDamage() {}
-    int GetInit() {}
+    double GetDamage() {return 0;}
+    double GetExtraDamage() {return 0;}
+    int GetInit() {return 0;}
 
     void SetDamage(double d) {}
     void SetExtraDamage(double ed) {}
     void SetInit(int i) {}
 
-    int GetLife() {};
-    void SetLife(double l) {};
+    int GetLife() {return 0;};
 
     void DisplayStats() {
-        cout << "\tArmor Stats\"" << endl;
+        cout << "<\tArmor Stats\t>" << endl;
         cout << "Armor Name: " << GetName() << endl;
         cout << "Defense: " << GetDefense() << endl;
+        cout << "Cost: " << GetCost() << endl << endl;
     }
 };
 

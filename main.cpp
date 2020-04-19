@@ -9,6 +9,6 @@ using namespace std;
 
 int main() {
     Game game;
-    game.Description(0);
+    game.PlayGame();
     return 0;
 }

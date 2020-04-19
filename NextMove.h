@@ -11,7 +11,7 @@
 
 using namespace std;
 
-class NextMove {
+class NextMove { // Class used store data about the description, location, and directions of a given player position
 private:
     string description;
     vector <DirectionPair> newPos;
@@ -23,19 +23,17 @@ public:
 
     string GetDescription() {return description;}
 
-    vector<DirectionPair> GetDirectionPair() {
+    vector<DirectionPair> GetDirectionPair() { // Returns the the vector DirectionPair
         vector<DirectionPair> copy;
-        for (int i = 0; i < newPos.size(); i++) {
-            copy.push_back(newPos[i]);
-        }
+        for (int i = 0; i < newPos.size(); i++) {copy.push_back(newPos[i]);}
         return copy;
     }
 
-    void AddPair(char d, int p) {
+    void ClearPair() {newPos.clear();}
+    void AddPair(char d, int p) { // Creates a new DirectionPair vector
         DirectionPair dp(d, p);
         newPos.push_back(dp);
     }
-
     void SetDescription(string d) {description = d;}
 };
 

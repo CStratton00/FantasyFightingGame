@@ -6,7 +6,7 @@
 #define FANTASYFIGHTINGGAME_DIRECTIONPAIR_H
 
 
-class DirectionPair {
+class DirectionPair { // Class is used to create a vector of locations and directions
 private:
     char direction;
     int pos;

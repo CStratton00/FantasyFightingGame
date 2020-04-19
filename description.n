@@ -3,8 +3,8 @@
 2/You make your way into the village center and see two paths in front of you. One path proceeds to the northern part of the village. You see what looks to be a traveling merchant farther along that path. The other path proceeds to the southern part of the village where the exit into the forest is. /W/1/N/3/S/4
 3/You proceed to the northern part of the village. Along the path you feel like someone is watching you. You pause and take a look around./S/2/E/5
 4/You proceed to the southern part of the village, and stop right before the village exit. Farther up the path you see a traveling merchant stopped by one of the houses./N/2/E/5/S/6
-5/You have made it to the traveling merchant! You can purchase weapons, health, and armor from them to aid your adventure. After purchasing your wares you can either proceed to the northern part of the village or towards the southern part of the village./N/3/S/4
-6/As you are exiting the quaint little village, you once again feel a presence stalking you. You pause and take one last glance./N/4/S/6
+5/You have made it to the traveling merchant! You can purchase weapons, health, and armor from them to aid your adventure. After purchasing your wares you can either proceed to the northern part of the village or towards the southern part of the village./W/3/S/4
+6/As you are exiting the quaint little village, you once again feel a presence stalking you. You pause and take one last glance./N/4/S/7
 7/You enter into a densely populated forest. Webs are strung up around the forest, making it hard to see what lies ahead. The only thing you can do is push forward towards your goal, and watch your back at every moment along the way./E/8/S/9
 8/Moving farther into the forest, you are on edge. You hear branches creaking and breaking all around you, and a soft hiss feels like it is coming from every direction. You pause and observe your surroundings…/W/7/S/11
 9/Moving south into the forest, you run into a traveling merchant! Now is a good time to take a quick break before proceeding with your mission./N/7/E/10
@@ -15,8 +15,10 @@
 14/Moving along the eastern wall of the temple, you pause. It feels as if someone is following you around in the halls…/W/13/N/17
 15/Moving along the western wall of the temple, you reach a corner and look down the hall. At the end you can just make out a figure, though it's not quite clear as to who they are yet.../E/13/N/18
 16/Going north from the entrance, you run into a corner in the wall./S/13/E/17
-17/You have reached a fork in the temple and have to make a decision as to where you want to proceed./S/14/W/16/N/17
+17/You have reached a fork in the temple and have to make a decision as to where you want to proceed./S/14/W/16/N/19
 18/Moving north along the temple wall, you start to get the feeling that there is danger ahead, you proceed with caution./S/15/E/20
-19/Moving north along the temple wall, you run into the traveling merchant. You can take a quick break and then proceed on with the mission./W/17/S/20
+19/Moving north along the temple wall, you run into the traveling merchant. You can take a quick break and then proceed on with the mission./W/17/N/20
 20/You are at the entrance of the boss layer, make sure you are ready to face the boss./W/18/E/19/N/21
-21/Upon entering the boss room, you are met with a  massive beast that looks deadlier than anything you have fought previously! This is the spirit beast that you must defeat.../
+21/Upon entering the boss room, you are met with a massive beast that looks deadlier than anything you have fought previously! This is the spirit beast that you must defeat.../
+22/Congratulations on slaying the spirit animal! You must have gone through some great struggles to finally complete this task, but none the less you have conquered your adventure! Now continue on your travels knowing that you are the hero of this small village!/
+23/You have been killed by the spirit beast... You may try again by reloading your save (if you saved (hopefully you saved)), or you may restart your adventure/
